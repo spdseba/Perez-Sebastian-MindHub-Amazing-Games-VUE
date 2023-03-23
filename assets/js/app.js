@@ -5,9 +5,9 @@ console.log(createApp)
 createApp({
   data() {
     return {
-      events: undefined,
-      categories: undefined,
-      filteredEvents: undefined,
+      events: [],
+      categories: [],
+      filteredEvents: [],
       searchValue: '',
       categoryChecked: []
     }
@@ -17,10 +17,25 @@ createApp({
     .then(resp => resp.json())
     .then(data => {
         console.log(data)
-        const fn = evt => evt.category
-        this.events = data.events.filter( fn)
-        this.categories = [ ... new Set(this.events.map(fn))]
-        this.filteredEvents = this.events
+        
+        if(document.title.includes("Upcoming")){
+          console.log("Upcoming")
+
+          this.events = data.events.filter(evt => evt.date >= data.currentDate);
+          console.log(this.events)
+          this.filteredEvents = this.events
+        }else if(document.title.includes("Past")){
+          console.log("Past")
+
+          this.events = data.events.filter(evt => evt.date < data.currentDate);
+          console.log(this.events)
+          this.filteredEvents = this.events
+        }else{
+          this.events = data.events.filter(evt => evt.category)
+
+          this.filteredEvents = this.events
+        }
+        this.categories = [ ... new Set(this.filteredEvents.map(evt => evt.category))]
     })
     .catch(err => console.log(err))
   },

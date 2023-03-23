@@ -1,3 +1,5 @@
+
+/*
 let table = document.getElementById("table");
 //URL de la API de donde se van a obtener los eventos
 let urlAPI = "https://mindhub-xj03.onrender.com/api/amazing";
@@ -200,25 +202,54 @@ function pastEvt_by_category(data){
 
 //Funcion que obtiene los eventos de la API y los muestra en tablas en pantalla
 getDataFromApi(urlAPI);
-/*
-
-let porcentajeTotal = arrayFiltrado.reduce((total, evento) => {
-  evento.assistance == undefined ? total += evento.estimate / evento.capacity : total += evento.assistance / evento.capacity
-  return total
-}, 0)
-return (porcentajeTotal * 100 / arrayFiltrado.length).toFixed(2);
-
-
-eventos.filter(eventos => eventos.assistance)
-
-
-function calcularAsistencia (array,nombrecategoria){
-
-  let arrayFiltrado = array.filter(elemento => elemento.category == nombrecategoria).reduce((total,evento) =>{
-      if(evento.assistance != undefined) return total += evento.assistance / evento.capacity 
-      return total += evento.estimate / evento.capacity
-  },0)
-  return (arrayFiltrado * 100 /array.filter(elemento => elemento.category == nombrecategoria).length).toFixed(2)
-}
-
 */
+
+const { createApp } = Vue
+//URL de la API de donde se van a obtener los eventos
+const urlAPI = "https://mindhub-xj03.onrender.com/api/amazing";
+console.log(createApp)
+createApp({
+  data() {
+    return {
+      events: [],
+      categories: [],
+      filteredEvents: [],
+      searchValue: '',
+      categoryChecked: []
+    }
+  },
+  created(){
+    fetch(urlAPI)
+    .then(resp => resp.json())
+    .then(data => {
+        console.log(data)
+        
+        if(document.title.includes("Upcoming")){
+          console.log("Upcoming")
+
+          this.events = data.events.filter(evt => evt.date >= data.currentDate);
+          console.log(this.events)
+          this.filteredEvents = this.events
+        }else if(document.title.includes("Past")){
+          console.log("Past")
+
+          this.events = data.events.filter(evt => evt.date < data.currentDate);
+          console.log(this.events)
+          this.filteredEvents = this.events
+        }else{
+          this.events = data.events.filter(evt => evt.category)
+
+          this.filteredEvents = this.events
+        }
+        this.categories = [ ... new Set(this.filteredEvents.map(evt => evt.category))]
+    })
+    .catch(err => console.log(err))
+  },
+  methods: {
+    filterByAll(){
+        this.filteredEvents = this.events.filter( evt => {
+            return (this.categoryChecked.includes(evt.category) || this.categoryChecked.length === 0) && evt.name.toLowerCase().includes(this.searchValue.toLowerCase())
+        })
+    }
+  }
+}).mount('#app')
