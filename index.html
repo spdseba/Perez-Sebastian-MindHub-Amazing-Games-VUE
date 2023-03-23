@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
+      <!-- íconos de bootstrap  -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+      <!-- Bootstrap 5.3v -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+      <!-- CSS -->
+      <link rel="stylesheet" href="./assets/css/styles.css">
+      <title>AEvents - Home</title>
+  </head>
+  <body>
+    <div id="app">
+    <!-- Header -->
+    <header class="py-3 mb-4 px-5 border-bottom ">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a href="./index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto">
+            <img src="./assets/img/Logo_Amazing_Events.png" width="100" alt="Logo Amazing Events">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item mx-1">
+                <a class="nav-link px-3 active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item mx-1">
+                <a class="nav-link px-3" href="./upcoming_events.html">Upcoming Events</a>
+              </li>
+              <li class="nav-item mx-1">
+                <a class="nav-link px-3" href="./past_events.html">Past Events</a>
+              </li>
+              <li class="nav-item mx-1">
+                <a class="nav-link px-3" href="./contact.html">Contact</a>
+              </li>
+              <li class="nav-item mx-1">
+                <a class="nav-link px-3" href="./stats.html">Stats</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- Main -->
+    <div class="main position-relative">
+      <div class="container-fluid carrousel">
+        <h1 class="section-title">Home</h1>
+        <div class="img-mobile">
+          <img src="./assets/img/1.jpg" class="img-fluid" alt="Evento 1">
+        </div>
+        <div id="carouselExampleIndicators" class="carousel slide">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="./assets/img/1.jpg" class="img-fluid" alt="Evento 1">
+            </div>
+            <div class="carousel-item">
+              <img src="./assets/img/2.jpg" class="img-fluid" alt="Evento 2">
+            </div>
+            <div class="carousel-item">
+              <img src="./assets/img/3.jpg" class="img-fluid" alt="Evento 3">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <nav class="navbar navbar-expand-lg search">
+        <form action="#" class="category-and-search py-1">
+          <div class="category-check d-flex justify-content-center py-2 align-items-center">
+              <template v-if="categories" v-for="category of categories">
+                <div class="individual-check">
+                  <label  class="mx-2">{{category}}
+                    <input type="checkbox" v-on:change="filterByAll" v-model="categoryChecked" class="category-checkbox" :value="category">
+                  </label>
+                </div>
+            </template>
+            </div>
+          <div class="input-group d-flex justify-content-center align-items-center">
+            <input type="text" id="search-input" v-model="searchValue" v-on:keyup="filterByAll" class="form-control" placeholder="Search your event" aria-label="Search your event" aria-describedby="search-button">
+              <span class="input-group-text pb-2" ><i class="bi bi-search"></i></span>
+          </div>
+        </form>
+      </nav>
+      <div class="container container-cards bg-light">
+        <div class="card-group  my-5" >
+          <div class="row w-100 " id="card-group">
+            <template v-if="filteredEvents.length > 0" v-for="evt of filteredEvents">
+            <div class="d-flex justify-content-center col-md-6 col-lg-4 py-5">
+              <div  class="card flex-column justify-content-between col-md-6 col-lg-4">
+                  <div class="card-image">
+                    <img class="card-img-top" v-bind:src="evt.image" :alt="evt.name">
+                  </div>
+                  <div class="card-body  overflow-hidden">
+                    <h5 class="card-title text-center">{{evt.name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-center p-3">{{evt.description}}</h6>
+                  </div>
+                  <div class="card-footer d-flex justify-content-between align-items-center py-1">
+                    <span>Price:$ {{evt.price}}</span>
+                    <a href="./details.html?id=${event._id}" class="btn">See More</a>
+                  </div>
+                </div>
+              </div>
+            </template>
+            <template v-else>
+              <div class="d-flex justify-content-center align-items-center  h-100 w-100">
+                <div class="alert alert-primary" role="alert">
+                  Events not found
+                </div>
+              </div>
+            </template>
+            <div hidden id="spinner"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="row">
+      <div class="col-sm-12 col-md-6 col-lg-6 d-flex justify-content-center align-items-center">
+        <a href="https://twitter.com/home" class="p-2">
+          <i class="bi bi-twitter p-2" id="search"></i>
+        </a>
+        <a href="https://www.youtube.com/" class="p-2">
+          <i class="bi bi-youtube p-2"></i>
+        </a>
+        <a href="https://www.facebook.com/" class="p-2">
+          <i class="bi bi-facebook p-2"></i>
+        </a>
+        <a href="https://www.instagram.com/" class="p-2">
+          <i class="bi bi-instagram p-2"></i>
+        </a>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-6 text-right d-flex justify-content-center align-items-center">
+          <h2 class="text-right">FE08-TN</h2>
+      </div>
+    </footer>
+    </div>
+    <!-- Bootstrap 5.3v -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <!-- <script src="./assets/js/data.js"></script>  -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./assets/js/app.js"></script>
+  </body>
+</html>

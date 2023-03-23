@@ -1,0 +1,326 @@
+*{
+    padding:0;
+    margin:0;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+.main{
+    min-height: 75vh;
+}
+
+/*** Footer ***/
+footer{
+    min-height: 10vh;
+    background-color: rgb(17, 18, 18);
+    color: #fff;
+    border-top: 5px solid #f099c2;
+}
+footer .row{
+    height: 100%!important;
+    min-height: 10rem;
+}
+footer a{
+    color: #fff;
+}
+footer .bi {
+    font-size: 1.5em;
+}
+footer a i:hover{
+    color: #f099c2;
+}
+footer.row h2{
+    width: 100%;
+    height: 3rem;
+    text-align: center;
+    line-height: 3rem;
+}
+/*** End Footer ***/
+
+.nav-link.active, .nav-link:hover{
+    background-color: #f099c2;
+    color: #fff !important;
+}
+
+#search-button{
+    background-color: #f099c2;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.container-fluid.carrousel{
+    padding: 0;
+}
+/*** Card ***/
+.card{
+    width: 350px;
+    height: 350px;
+}
+.card .card-body h5{
+    height: 2rem;
+    line-height: 1.8rem;
+}
+.card-image{
+    height: 150px;
+    overflow: hidden;
+}
+.card-footer{
+    height: 4rem;
+}
+#card-group{
+    min-height: 50vh;
+}
+/*** End Card ***/
+
+.section-title{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    background-color: rgba(10, 10, 10, 0.6);
+    height: 100px;
+    width: 100%;
+    z-index: 10000;
+    text-align: center;
+    color: #f099c2;
+}
+.btn{
+    background-color: #f099c2;
+    color: #fff;
+}
+.btn:hover{
+    background-color: #000;
+    color: #f099c2;
+}
+.navbar.navbar-expand-lg.search{
+    padding: 0;
+    margin: 0;
+    height: 7rem;
+    background-color: rgba(10, 10, 10, 0.8);
+    border-top: 2px solid #f099c2;
+}
+.navbar.navbar-expand-lg.search .category-and-search{
+    display: flex;
+    flex-wrap: wrap;
+}
+.navbar.navbar-expand-lg.search .category-and-search .category-check{
+    width: 600px;
+}
+.navbar.navbar-expand-lg.search .category-and-search .input-group{
+    width: 500px;
+}
+.category-and-search{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.individual-check{
+    text-align: center;
+    margin: 0 3px 0 0;
+    font-size: .9rem;
+}
+.category-check{
+    color: #fff;
+}
+#search-button{
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+}
+header{
+    position: sticky;
+    top: 0;
+}
+.table th{
+    width: 33%;
+}
+#spinner:not([hidden]) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #spinner::after {
+    content: "";
+    width: 80px;
+    height: 80px;
+    border: 2px solid #f3f3f3;
+    border-top: 3px solid #f25a41;
+    border-radius: 100%;
+    will-change: transform;
+    animation: spin 1s infinite linear
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+.container.container-cards{
+    min-height: 60vh;
+}
+.container.contact{
+    min-height: 70vh;
+}
+.container.contact .row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container.contact .row form{
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container-xxl.individual .row{
+    min-height: 78vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.container-xxl.individual .row .card-image-left{
+    width: 50%;
+
+}
+
+.container-xxl.individual .row .card-image-left img{
+    margin: 2rem 0;
+    -webkit-box-shadow: -4px -4px 11px 2px rgba(0,0,0,0.27);
+    -moz-box-shadow: -4px -4px 11px 2px rgba(0,0,0,0.27);
+    box-shadow: -4px -4px 11px 2px rgba(0,0,0,0.27);
+}
+.container-xxl.individual .row .card-body-right{
+    width: 50%;
+    margin: 2rem 0 2rem 0;
+    border: 1px solid #000;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-shadow: 0px -4px 11px 2px rgba(0,0,0,0.27);
+    -moz-box-shadow: 0px -4px 11px 2px rgba(0,0,0,0.27);
+    box-shadow: 0px -4px 11px 2px rgba(0,0,0,0.27);
+}
+.container-xxl.individual .row .card-body-right span{
+    font-weight: 800;
+}
+.container-xxl.individual .row .card-body-right .card-title{
+    background-color: #181818;
+    width: 100%;
+    color: #f099c2;
+}
+.container-xxl.individual .row .card-body-right .card-description{
+    background-color: #dfe1e3;
+    width: 100%;
+    min-height: 100px;
+}
+.container-xxl.individual .row .card-body-right .card-date{
+    background-color: #dfe1e3;
+    width: 50%;
+    min-height: 15px;
+}
+.container-xxl.individual .row .card-body-right .card-category{
+    background-color: #dfe1e3;
+    width: 50%;
+    min-height: 15px;
+}
+.container-xxl.individual .row .card-body-right .card-place{
+    background-color: #dfe1e3;
+    width: 50%;
+    min-height: 10px;
+}
+.container-xxl.individual .row .card-body-right .card-capacity{
+    background-color: #dfe1e3;
+    width: 50%;
+    min-height: 10px;
+}
+.container-xxl.individual .row .card-body-right .card-estimate{
+    background-color: #dfe1e3;
+    width: 50%;
+    min-height: 10px;
+}
+.container-xxl.individual .row .card-body-right .card-price{
+    background-color: antiquewhite;
+    width: 50%;
+    min-height: 10px;
+}
+h2.table-title{
+    font-size: 1.5rem;
+    background-color: #181818;
+    color: #f099c2;
+    line-height: 3rem;
+    text-indent: 5px;
+}
+table tr:hover{
+    background-color: #000;
+    color: #f099c2;
+}
+.img-mobile{
+    display: none;
+}
+
+@media screen and (max-width:1100px){
+    .img-mobile{
+        display: block;
+    }
+    #carouselExampleIndicators{
+        display: none;
+    }
+
+    .navbar.navbar-expand-lg.search .category-and-search .category-check{
+        width: 100%;
+        flex-wrap: nowrap;
+        text-align: center;
+    }
+    .navbar.navbar-expand-lg.search .category-and-search .category-check ul li{
+        width: 30%;
+        display: inline-block;
+    }
+    .navbar.navbar-expand-lg.search .category-and-search .input-group{
+        width: 50%;
+    }
+    .individual-card{
+        flex-direction: column;
+        align-items: center;
+    }
+    .container-xxl.individual .row .card-image-left{
+        width: 85%;
+    
+    }
+    .container-xxl.individual .row .card-body-right{
+        width: 85%;
+    }
+
+}
+
+@media screen and (min-width:980px) and (max-width:1200px){
+    .card{
+        width: 300px;
+    }
+}
+
+
+@media screen and (max-width:768px){
+    .navbar.navbar-expand-lg.search{
+        height: 9rem;
+    }
+    .carrousel{
+        min-height: 10rem;
+        background-color: #181818;
+    }
+}
